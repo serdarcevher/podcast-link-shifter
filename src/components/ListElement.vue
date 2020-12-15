@@ -1,5 +1,6 @@
 <template>
     <li>
+        <button type="button" class="remove" @click="remove" v-if="!isResultItem">x</button>
         <div class="time-holder mr-1">
             <span>(</span>
             <span v-if="minutes < 10">0</span><span v-text="minutes"></span>
@@ -18,7 +19,7 @@ import Helper from '../mixins/Helper.js';
 export default {
     name: 'ListElement',
     mixins: [Helper],
-    props: ['data-element'],
+    props: ['data-element', 'is-result-item'],
     computed: {
         point() {
             return this.timetoMinsAndSecs(this.dataElement.time)
@@ -33,5 +34,13 @@ export default {
     data() {
         return {}
     },
+    methods: {
+        remove() {
+            let r = confirm('Are you sure you want to remove this item?');
+            if (r) {
+                this.$parent.$emit('remove', {'container': 'list', 'time': this.dataElement.time });
+            }
+        }
+    }
 }
 </script>

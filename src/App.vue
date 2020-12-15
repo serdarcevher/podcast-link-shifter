@@ -18,6 +18,10 @@ export default {
 </script>
 
 <style>
+ul {
+  padding-inline-start:10px;
+}
+
 div#columns {
   display: flex;
   flex-wrap: wrap;
@@ -127,5 +131,11 @@ ul li {
   color:white;
   border-radius:10px;
   height:30px;
+}
+button.remove {
+  background-color:silver;
+  color:white;
+  border-radius:5px;
+  margin-right:10px;
 }
 </style>

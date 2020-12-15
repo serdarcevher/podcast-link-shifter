@@ -1,5 +1,6 @@
 <template>
     <li>
+        <button type="button" class="remove" @click="remove" v-if="!isResultItem">x</button>
         <div class="time-holder ad mr-1">
             <span>(</span>
             <span v-if="minutes < 10">0</span><span v-text="minutes"></span>
@@ -17,7 +18,7 @@ import Helper from '../mixins/Helper.js';
 export default {
     name: 'Ad',
     mixins: [Helper],
-    props: ['dataAd'],
+    props: ['data-ad', 'is-result-item'],
     data() {
         return {
             element: {}
@@ -44,6 +45,14 @@ export default {
     },
     mounted() {
         this.element = this.dataAd;
+    },
+    methods: {
+        remove() {
+            let r = confirm('Are you sure you want to remove this item?');
+            if (r) {
+                this.$parent.$emit('remove', {'container': 'ads', 'time': this.dataAd.time });
+            }
+        }
     }
 }
 </script>

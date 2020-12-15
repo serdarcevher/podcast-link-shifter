@@ -14,12 +14,12 @@
 
             <div class="column pt-2">
                 <div v-if="!list.length" class="mb-2">Your links list is empty. Start by adding a link.</div>
-                <List :list-data="list" @addLink="onAddLink"></List>
+                <List :list-data="list" @addLink="onAddLink" @remove="onRemove"></List>
             </div>
 
             <div class="column pt-2">
                 <div v-if="!ads.length" class="mb-2">Your ads list is empty. Start by adding an ad.</div>
-                <Ads :ads-data="ads" @addAd="onAddAd"></Ads>
+                <Ads :ads-data="ads" @addAd="onAddAd" @remove="onRemove"></Ads>
             </div>
 
             <div class="column pt-2">
@@ -63,6 +63,10 @@ export default {
 
             onAddAd(data) {
                 this.ads.splice(data.index, 0, data.formData);
+            },
+
+            onRemove(data) {
+                this[data.container] = this[data.container].filter(x => x.time !== data.time);
             },
 
             ensureListsAreEmpty() {
