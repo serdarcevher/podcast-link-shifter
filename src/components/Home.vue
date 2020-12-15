@@ -16,7 +16,9 @@
                 <Ads :ads-data="ads" @addAd="onAddAd"></Ads>
             </div>
 
-            <div class="column pt-2"></div>
+            <div class="column pt-2">
+                <ListWithAds :data-list="list" :data-ads="ads"></ListWithAds>
+            </div>
         </div>
 
 
@@ -57,24 +59,27 @@ let sampleData = {
         {
             startingMin: 0,
             startingSec: 30,
-            duration: 12
+            duration: 12,
+            description: 'Wix spot'
         },
         {
             startingMin: 1,
             startingSec: 25,
             duration: 20,
-            description: 'GoDaddy spot 1'
+            description: 'GoDaddy spot'
         }
     ]
 };
 
 import List from './List';
 import Ads from './Ads';
+import ListWithAds from './ListWithAds';
 
 export default {
     components: {
         List,
-        Ads
+        Ads,
+        ListWithAds
     },
     name: 'Home',
         props: {
