@@ -100,6 +100,7 @@ export default {
 
             let index = this.findIndexInList(point, this.ads);
 
+            this.resetForm();
             this.$emit('addAd', { formData: formData, index: index });
         },
 
