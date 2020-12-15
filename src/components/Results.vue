@@ -67,7 +67,9 @@ export default {
                 }
             });
 
-            return newList;
+            return newList.sort(function(a,b){
+                return a.time - b.time;
+            });
         }
     }
 }
