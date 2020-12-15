@@ -8,7 +8,8 @@
                 v-for="(element, index) in shiftedList" 
                 :key="'r_' + index"
                 :is-ads-visible="isAdsVisible"
-                :index="index"></ResultsItem>
+                :index="index"
+                @changeAudioTime="onChangeAudioItem"></ResultsItem>
         </ul>
         
     </div>
@@ -70,6 +71,11 @@ export default {
             return newList.sort(function(a,b){
                 return a.time - b.time;
             });
+        }
+    },
+    methods: {
+        onChangeAudioItem(data) {
+            this.$emit('changeAudioTime', data);
         }
     }
 }

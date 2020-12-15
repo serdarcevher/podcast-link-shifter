@@ -14,22 +14,22 @@
 
             <div class="column pt-2">
                 <div v-if="!list.length" class="mb-2">Your links list is empty. Start by adding a link.</div>
-                <List :list-data="list" @addLink="onAddLink" @remove="onRemove"></List>
+                <List :list-data="list" @addLink="onAddLink" @remove="onRemove" @changeAudioTime="onChangeAudioTime"></List>
             </div>
 
             <div class="column pt-2">
                 <div v-if="!ads.length" class="mb-2">Your ads list is empty. Start by adding an ad.</div>
-                <Ads :ads-data="ads" @addAd="onAddAd" @remove="onRemove"></Ads>
+                <Ads :ads-data="ads" @addAd="onAddAd" @remove="onRemove" @changeAudioTime="onChangeAudioTime"></Ads>
             </div>
 
             <div class="column pt-2">
-                <Results :data-list="list" :data-ads="ads"></Results>
+                <Results :data-list="list" :data-ads="ads" @changeAudioTime="onChangeAudioTime"></Results>
             </div>
         </div>
 
 
         <div id="right-top">
-            <Player></Player>
+            <Player :selected-time="selectedAudioTime"></Player>
         </div>
     </div>
 </template>
@@ -56,7 +56,8 @@ export default {
         data() {
             return {
                 list: [],
-                ads: []
+                ads: [],
+                selectedAudioTime: 0
             }
         },
 
@@ -72,6 +73,10 @@ export default {
 
             onRemove(data) {
                 this[data.container] = this[data.container].filter(x => x.time !== data.time);
+            },
+
+            onChangeAudioTime(time) {
+                this.selectedAudioTime = time;
             },
 
             ensureListsAreEmpty() {

@@ -103,6 +103,7 @@ ul li {
 }
 
 .time-holder {
+  cursor:pointer;
   display:inline;
   color:blue;
 }

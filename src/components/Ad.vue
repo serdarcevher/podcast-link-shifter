@@ -1,7 +1,7 @@
 <template>
     <li>
         <button type="button" class="remove" @click="remove" v-if="!isResultItem">x</button>
-        <div class="time-holder ad mr-1">
+        <div class="time-holder ad mr-1" @click="changeAudioTime">
             <span>(</span>
             <span v-if="minutes < 10">0</span><span v-text="minutes"></span>
             <span>:</span>
@@ -52,6 +52,9 @@ export default {
             if (r) {
                 this.$parent.$emit('remove', {'container': 'ads', 'time': this.dataAd.time });
             }
+        },
+        changeAudioTime() {
+            this.$parent.$emit('changeAudioTime', this.dataAd.time);
         }
     }
 }
