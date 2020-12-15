@@ -1,4 +1,4 @@
-# podcast-link-shifter
+# Podcast Link Shifter
 
 An helper for podcast creators to automatically adjust time links based on the inserted ads in between. 
 
@@ -8,7 +8,7 @@ An helper for podcast creators to automatically adjust time links based on the i
 
 - You can toggle the ads on the results column to copy the results and use them in your podcast descriptions.
 
-![See it working](https://github.com/serdarcevher/podcast-link-shifter/raw/master/howitworks.gif "See it working")
+![See it working](https://github.com/serdarcevher/podcast-link-shifter/raw/master/demo.gif "See it working")
 
 
 ## Project setup
