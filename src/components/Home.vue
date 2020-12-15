@@ -4,6 +4,10 @@
             <h1>{{ msg }}</h1>
 
             <button @click="loadSampleData" class="p-2 mb-2">Load Sample Data</button>
+            <button @click="saveFile" v-if="list.length" class="p-2 ml-1 mb-2">Save to File</button>
+            <button @click="$refs.file.click()" class="p-2 ml-1 mb-2">Load from File</button>
+
+            <input type="file" multiple="false" ref="file" accept="application/JSON" @change="loadFromFile" style="display: none">
         </div>
 
         <div id="columns">
@@ -95,6 +99,49 @@ export default {
 
                     that.$forceUpdate();
                 });
+            },
+
+            saveFile() {
+                let content = {
+                    'list': this.list,
+                    'ads': this.ads
+                };
+                let fileName = "myPodcast.json";
+
+                const data = JSON.stringify(content)
+                const blob = new Blob([data], {type: 'text/plain'})
+                const e = document.createEvent('MouseEvents'),
+                a = document.createElement('a');
+                a.download = fileName;
+                a.href = window.URL.createObjectURL(blob);
+                a.dataset.downloadurl = ['text/json', a.download, a.href].join(':');
+                e.initEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+                a.dispatchEvent(e);
+            },
+
+            loadFromFile(event) {
+                let that = this;
+                const reader = new FileReader();
+                const file = event.target.files[0];
+                const blob = new Blob([file], {type:"application/json"});
+
+                reader.addEventListener("load", e => {
+                    try {
+
+                        let data = JSON.parse(e.target.result);
+                        if (!data.list[0].text) {
+                            alert('Wrong file format.');
+                            return;
+                        }
+
+                        that.list = data.list;
+                        that.ads = data.ads;
+                    } catch (error) {
+                        alert('We could not load the list. Are you sure that the file was exported from here?');
+                    }
+                });
+
+                reader.readAsText(blob);
             }
         }
     }

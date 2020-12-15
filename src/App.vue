@@ -64,6 +64,9 @@ d-block {
 .mt-1 {
   margin-top:5px;
 }
+.ml-1 {
+  margin-left:5px;
+}
 .mr-1 {
   margin-right:5px;
 }
