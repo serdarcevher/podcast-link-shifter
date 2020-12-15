@@ -138,4 +138,14 @@ button.remove {
   border-radius:5px;
   margin-right:10px;
 }
+
+#right-top {
+  position:fixed;
+  width:400px;
+  height:120px;
+  line-height:50px;
+  right:0;
+  top:0;
+  z-index:10;
+}
 </style>

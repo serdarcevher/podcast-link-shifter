@@ -28,6 +28,9 @@
         </div>
 
 
+        <div id="right-top">
+            <Player></Player>
+        </div>
     </div>
 </template>
 
@@ -36,13 +39,15 @@
 import List from './List';
 import Ads from './Ads';
 import Results from './Results';
+import Player from './Player';
 import SampleData from '../assets/sampleData.json';
 
 export default {
     components: {
         List,
         Ads,
-        Results
+        Results,
+        Player
     },
     name: 'Home',
         props: {
