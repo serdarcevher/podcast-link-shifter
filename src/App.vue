@@ -49,9 +49,6 @@ div#columns {
   margin-top: 60px;
 }
 
-d-block {
-  display:block;
-}
 .p-2 {
   padding:10px;
 }
@@ -140,7 +137,20 @@ button.remove {
   margin-right:10px;
 }
 
-#right-top {
+.flex-link {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+#top-left {
+  position:fixed;
+  top:0;
+  left:0;
+  width:250px;
+  height:40px;
+}
+
+#top-right {
   position:fixed;
   width:400px;
   height:120px;
