@@ -2,9 +2,9 @@
     <li>
         <div class="time-holder mr-1">
             <span>(</span>
-            <span v-if="element.minutes < 10">0</span><span v-text="element.minutes"></span>
+            <span v-if="minutes < 10">0</span><span v-text="minutes"></span>
             <span>:</span>
-            <span v-if="element.seconds < 10">0</span><span v-text="element.seconds"></span>
+            <span v-if="seconds < 10">0</span><span v-text="seconds"></span>
             <span>)</span>
         </div>
 
@@ -14,9 +14,22 @@
 </template>
 
 <script>
+import Helper from '../mixins/Helper.js';
 export default {
     name: 'ListElement',
+    mixins: [Helper],
     props: ['data-element'],
+    computed: {
+        point() {
+            return this.timetoMinsAndSecs(this.element.time)
+        },
+        minutes() {
+            return this.point.minutes;
+        },
+        seconds() {
+            return this.point.seconds;   
+        }
+    },
     data() {
         return {
             element: {}
@@ -24,7 +37,6 @@ export default {
     },
     mounted() {
         this.element = this.dataElement;
-        console.log(this.element.minutes);
     }
 }
 </script>

@@ -2,9 +2,9 @@
     <li>
         <div class="time-holder mr-1">
             <span>(</span>
-            <span v-if="element.startingMin < 10">0</span><span v-text="element.startingMin"></span>
+            <span v-if="minutes < 10">0</span><span v-text="minutes"></span>
             <span>:</span>
-            <span v-if="element.startingSec < 10">0</span><span v-text="element.startingSec"></span>
+            <span v-if="seconds < 10">0</span><span v-text="seconds"></span>
             <span>)</span>
         </div>
 
@@ -13,8 +13,10 @@
 </template>
 
 <script>
+import Helper from '../mixins/Helper.js';
 export default {
     name: 'Ad',
+    mixins: [Helper],
     props: ['dataAd'],
     data() {
         return {
@@ -22,6 +24,16 @@ export default {
         }
     },
     computed: {
+        point() {
+            return this.timetoMinsAndSecs(this.element.time)
+        },
+        minutes() {
+            return this.point.minutes;
+        },
+        seconds() {
+            return this.point.seconds;   
+        },
+
         adText() {
             let text = this.element.duration + 's';
             if (this.element.description) {

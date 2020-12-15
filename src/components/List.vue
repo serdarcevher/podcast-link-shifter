@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h3>Links</h3>
+        <h3>Links (On "No Ads" Version)</h3>
         <form @keyup.enter="addLink" ref="dataForm">
             <p>
                 <label>Time: </label>
@@ -20,7 +20,7 @@
         </form>
 
         <ul id="elements-list" class="text-align-left no-list-style centered">
-            <ListElement v-for="element in list" v-bind:key="element.minutes + '_' + element.seconds" :data-element="element"></ListElement>
+            <ListElement v-for="element in list" v-bind:key="element.time" :data-element="element"></ListElement>
         </ul>
 
     </div>
@@ -28,10 +28,12 @@
 </template>
 
 <script>
+import Helper from '../mixins/Helper';
 import ListElement from './ListElement';
 export default {
     name: 'List',
     components: { ListElement },
+    mixins: [Helper],
     data() {
         return {
             list: [],
@@ -48,64 +50,51 @@ export default {
     },
     methods: {
         addLink() {
+            if (!this.minutes) {
+                this.minutes = 0;
+            }
+
+            if (!this.seconds) {
+                this.seconds = 0;
+            }
+
+            if (this.seconds > 59 || this.seconds < 0) {
+                alert('Invalid seconds value');
+                return;
+            }
+
+            if (this.minutes < 0) {
+                alert('Invalid minutes value');
+                return;
+            }
+
             let formData = {
-                'minutes': this.minutes,
-                'seconds': this.seconds,
+                'time': (this.minutes * 60) + this.seconds,
                 'text': this.text,
                 'url': this.url,
-                'type': 'link'
             };
-
-            console.log(formData.text);
 
             if (!formData.text.length && !formData.url.length) {
                 alert('Both text and link fields cannot be empty');
                 return;
             }
 
-            if (!formData.minutes) {
-                formData.minutes = 0;
-            }
-
-            if (!formData.seconds) {
-                formData.seconds = 0;
-            }
-
-            if (formData.seconds > 59 || formData.seconds < 0) {
-                alert('Invalid seconds value');
+            if (this.list.some(e => e.time == formData.time)) {
+                alert('A link for this point already exists');
                 return;
             }
 
-            if (formData.minutes < 0) {
-                alert('Invalid minutes value');
-                return;
-            }
+            let index = this.findIndexInList(formData.time, this.list);
 
-            if (this.list.some(e => e.minutes == formData.minutes && e.seconds == formData.seconds)) {
-                alert('A link for this point already exist');
-                return;
-            }
-
-            let index = this.findLinkPosition(formData.minutes, formData.seconds);
-
-            this.$refs['dataForm'].reset();
+            this.resetForm();
             this.$emit('addLink', { formData: formData, index: index });
         },
 
-        findLinkPosition(minutes, seconds) {
-            let index = 0;
-            let secondsSum = (minutes * 60) + seconds;
-
-            this.list.forEach(function(element){
-
-                let elementSecondsSum = (element.minutes * 60) + element.seconds;
-                if (elementSecondsSum <= secondsSum) {
-                    index++;
-                }
-                console.log(element);
-            });
-
-            return index;
+        resetForm() {
+            this.minutes = null;
+            this.seconds = null;
+            this.text = '';
+            this.url = '';
         }
     }
 }

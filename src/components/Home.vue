@@ -30,26 +30,22 @@ let sampleData = {
 
     links: [
         {
-            minutes:0,
-            seconds:18,
+            time: 18,
             text: 'Duyuru: Podcast yaparak geçinilir mi?',
             url: 'https://www.youtube.com/redirect?redir_token=QUFFLUhqbV9CeHAxWFp0UF'
         },
         {
-            minutes:1,
-            seconds:44,
+            time:104,
             text: 'Türkiye Günlükleri serisi',
             url: null
         },
         {
-            minutes:3,
-            seconds:20,
+            time: 200,
             text: 'Berber muhabbeti',
             url: null
         },
         {
-            minutes:6,
-            seconds:0,
+            time:360,
             text: 'Dilin amacı ne?',
             url: null
         }
@@ -57,14 +53,12 @@ let sampleData = {
 
     ads: [
         {
-            startingMin: 0,
-            startingSec: 30,
+            time: 30,
             duration: 12,
             description: 'Wix spot'
         },
         {
-            startingMin: 1,
-            startingSec: 25,
+            time: 85,
             duration: 20,
             description: 'GoDaddy spot'
         }
