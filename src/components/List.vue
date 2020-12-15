@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h3>Links (On "No Ads" Version)</h3>
+        <h3>Links</h3>
         <form @keyup.enter="addLink" ref="dataForm">
             <p>
                 <label>Time: </label>

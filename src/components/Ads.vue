@@ -15,7 +15,7 @@
                 <label>Description:</label><input type="text" v-model="description" autocomplete="off" name="text" class="long-input mb-2" placeholder="Optional" />
             </p>
 
-            <button type="button" class="btn mt-1 p-2" @click="addAd">Add Ad</button>
+            <button type="button" class="btn mt-1 p-2 mb-2" @click="addAd">Add Ad</button>
 
             <ul id="ads-list" class="text-align-left no-list-style centered">
                 <Ad v-for="ad in ads" v-bind:key="ad.time" :data-ad="ad"></Ad>

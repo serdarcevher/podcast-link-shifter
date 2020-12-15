@@ -1,69 +1,64 @@
 <template>
     <div>
-        <h3>Shifted Links</h3>
+        <h3>Result <button @click="isAdsVisible = !isAdsVisible">Toggle Ads</button> </h3>
 
         <ul class="no-list-style text-align-left">
-            <li v-for="(element, index) in listWithAds" :key="index">
-                <div>
-                    {{ element.shiftedMinutes }}:{{ element.shiftedSeconds }} element.text
-                </div>
-            </li>
+            <ListWithAdsItem 
+                :element="element" 
+                v-for="(element, index) in shiftedList" 
+                :key="index"
+                :is-ads-visible="isAdsVisible"></ListWithAdsItem>
         </ul>
+        
     </div>
 </template>
 
 <script>
+import ListWithAdsItem from './ListWithAdsItem';
+
 export default {
     name: 'ListWithAds',
+    components: {
+        ListWithAdsItem
+    },
     props: ['data-list', 'data-ads'],
     data() {
         return {
             list: [],
             ads: [],
+            isAdsVisible: true
         }
     },
     mounted() {
-        this.list = this.dataList,
-        this.ads = this.dataAds
+        this.list = this.dataList;
+        this.ads = this.dataAds;
     },
 
     computed: {
-        adsInBetween() {
-            let elements = [];
 
-            this.ads.forEach(function(ad){
-                let element = {
-                    'start': (ad.startingMin * 60) + ad.startingSec,
-                    'duration': ad.duration
-                }
-                elements.push(element);
+        combinedList() {
+            let combinedList = this.list.concat(this.ads).sort(function(a,b){
+                return a.time - b.time;
             });
 
-            return elements;
+            return combinedList;
         },
 
-        listWithAds() {
-            let elements = [];
-            let that = this;
+        shiftedList() {
+            let offsetSeconds = 0;
+            let newList = JSON.parse(JSON.stringify(this.combinedList));
 
-            this.list.forEach(function(element) {
-                let offsetSeconds = 0;
-                let linkPositionInSeconds = (element.minutes * 60) + element.seconds;
+            newList.forEach(function(item){
+                if (item.duration) { //this is an ad, let's get the duration
+                    offsetSeconds = offsetSeconds + item.duration;
+                }
 
-                that.adsInBetween.forEach(function(ad){
-                    if (ad.start <= linkPositionInSeconds) {
-                        offsetSeconds+= ad.duration;
-                    }
-                });
-
-                linkPositionInSeconds+= offsetSeconds;
-                element.shiftedMinutes = Math.floor(linkPositionInSeconds / 60);
-                element.shiftedSeconds = linkPositionInSeconds - element.shiftedMinutes * 60;
-
-                elements.push(element);
+                if (!item.duration) { // this is a link, let's add the total offset to its position
+                    item.time = item.time + offsetSeconds;
+                }
             });
 
-            return elements;
+            return newList;
         }
     }
 }

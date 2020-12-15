@@ -1,6 +1,6 @@
 <template>
     <li>
-        <div class="time-holder mr-1">
+        <div class="time-holder ad mr-1">
             <span>(</span>
             <span v-if="minutes < 10">0</span><span v-text="minutes"></span>
             <span>:</span>

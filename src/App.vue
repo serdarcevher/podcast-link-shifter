@@ -84,9 +84,10 @@ d-block {
 #elements-list {
   width:50%;
   min-width:300px;
+  padding-left:0;
 }
 
-#elements-list li {
+ul li {
   padding-top:5px;
 } 
 
@@ -97,6 +98,9 @@ d-block {
 .time-holder {
   display:inline;
   color:blue;
+}
+.time-holder.ad {
+  color:#c90606;
 }
 
 .centered {
@@ -114,8 +118,9 @@ d-block {
 }
 
 .ad-bubble {
+  display:inline-block;
   width:80%;
-  background-color:blue;
+  background-color:#c90606;
   color:white;
   border-radius:10px;
   height:30px;

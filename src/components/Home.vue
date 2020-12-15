@@ -58,7 +58,7 @@ let sampleData = {
             description: 'Wix spot'
         },
         {
-            time: 85,
+            time: 125,
             duration: 20,
             description: 'GoDaddy spot'
         }
