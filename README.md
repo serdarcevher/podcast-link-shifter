@@ -2,11 +2,13 @@
 
 An helper for podcast creators to automatically adjust time links based on the inserted ads in between. 
 
-- Supports saving your work as JSON files and loading them back for possible future modifications,
+Working demo: https://serdarcevher.github.io/podcast-link-shifter/
 
-- Supports loading your podcast audio (as an MP3 file) hence double-checking the links on the fly by clicking on the timestamps,
+- You can save your work as JSON files and load them back for possible future modifications,
 
-- You can toggle the ads on the results column to copy the results and use them in your podcast descriptions.
+- You can load your podcast audio (as an MP3 file) and double-check the modified timestamps on the fly by clicking on them,
+
+- You can toggle the ads on the results column and copy the links with the shifted timestamps to use them in your podcast descriptions.
 
 ![See it working](https://github.com/serdarcevher/podcast-link-shifter/raw/master/demo.gif "See it working")
 
