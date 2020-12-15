@@ -1,12 +1,26 @@
 {
   "name": "podcast-link-shifter",
   "version": "0.1.0",
-  "private": true,
+  "description": "An helper for podcast creators to automatically adjust timestamp links based on the inserted ads in between.",
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/serdarcevher/podcast-link-shifter.git"
+  },
+  "keywords": [
+    "podcast",
+    "timestamp",
+    "ads",
+    "advertising",
+    "link",
+  ],
+  "author": "Serdar Cevher <scevher@gmail.com>",
+  "license": "ISC",
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^2.6.11"
