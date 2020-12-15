@@ -10,7 +10,9 @@
         </div>
 
         <span v-if="dataElement.text" v-text="dataElement.text" class="mr-1"></span>
-        <span v-if="dataElement.url" v-text="dataElement.url"></span>
+        <span v-if="dataElement.url">
+            <a :href="dataElement.url" target="_blank" v-text="dataElement.url"></a>
+        </span>
     </li>
 </template>
 
