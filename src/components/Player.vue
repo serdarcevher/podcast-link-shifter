@@ -1,7 +1,7 @@
 <template>
     <div>
         <input type="file" multiple="false" ref="mp3" accept=".mp3,audio/*" @change="loadPodcast" style="display: none">
-        <a href="javascript:void(0);" @click="$refs.mp3.click()" class="mr-2">Load your podcast to test links</a>
+        <a href="javascript:void(0);" @click="$refs.mp3.click()" class="mr-2">Load your audio to test links</a>
 
         <div>
             <audio ref="audio" controls="controls" :src="source" type="audio/mp3"></audio>
