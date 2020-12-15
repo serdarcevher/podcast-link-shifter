@@ -8,8 +8,8 @@
             <span>)</span>
         </div>
 
-        <span v-if="element.text" v-text="element.text" class="mr-1"></span>
-        <span v-if="element.url" v-text="element.url"></span>
+        <span v-if="dataElement.text" v-text="dataElement.text" class="mr-1"></span>
+        <span v-if="dataElement.url" v-text="dataElement.url"></span>
     </li>
 </template>
 
@@ -21,22 +21,17 @@ export default {
     props: ['data-element'],
     computed: {
         point() {
-            return this.timetoMinsAndSecs(this.element.time)
+            return this.timetoMinsAndSecs(this.dataElement.time)
         },
         minutes() {
             return this.point.minutes;
         },
         seconds() {
             return this.point.seconds;   
-        }
+        },
     },
     data() {
-        return {
-            element: {}
-        }
+        return {}
     },
-    mounted() {
-        this.element = this.dataElement;
-    }
 }
 </script>

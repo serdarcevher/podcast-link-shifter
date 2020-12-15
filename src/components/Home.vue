@@ -2,6 +2,8 @@
     <div id="container">
         <div>
             <h1>{{ msg }}</h1>
+
+            <button @click="loadSampleData" class="p-2 mb-2">Load Sample Data</button>
         </div>
 
         <div id="columns">
@@ -17,7 +19,7 @@
             </div>
 
             <div class="column pt-2">
-                <ListWithAds :data-list="list" :data-ads="ads"></ListWithAds>
+                <Results :data-list="list" :data-ads="ads"></Results>
             </div>
         </div>
 
@@ -26,54 +28,17 @@
 </template>
 
 <script>
-let sampleData = {
-
-    links: [
-        {
-            time: 18,
-            text: 'Duyuru: Podcast yaparak geçinilir mi?',
-            url: 'https://www.youtube.com/redirect?redir_token=QUFFLUhqbV9CeHAxWFp0UF'
-        },
-        {
-            time:104,
-            text: 'Türkiye Günlükleri serisi',
-            url: null
-        },
-        {
-            time: 200,
-            text: 'Berber muhabbeti',
-            url: null
-        },
-        {
-            time:360,
-            text: 'Dilin amacı ne?',
-            url: null
-        }
-    ],
-
-    ads: [
-        {
-            time: 30,
-            duration: 12,
-            description: 'Wix spot'
-        },
-        {
-            time: 125,
-            duration: 20,
-            description: 'GoDaddy spot'
-        }
-    ]
-};
 
 import List from './List';
 import Ads from './Ads';
-import ListWithAds from './ListWithAds';
+import Results from './Results';
+import SampleData from '../assets/sampleData.json';
 
 export default {
     components: {
         List,
         Ads,
-        ListWithAds
+        Results
     },
     name: 'Home',
         props: {
@@ -86,18 +51,6 @@ export default {
             }
         },
 
-        mounted() {
-            let that = this;
-            //console.log(sampleData);
-            sampleData.links.forEach(function(element){
-                that.list.push(element);
-            });
-
-            sampleData.ads.forEach(function(element){
-                that.ads.push(element);
-            });
-        },
-
         methods: {
             onAddLink(data) {
                 //this.list.push(data.formData);
@@ -106,6 +59,42 @@ export default {
 
             onAddAd(data) {
                 this.ads.splice(data.index, 0, data.formData);
+            },
+
+            ensureListsAreEmpty() {
+                let that = this;
+                return new Promise(function(resolve, reject) {
+                    if (that.list.length > 0 || that.ads.length > 0) {
+                        let r = confirm('Your current lists will be wiped. Continue?');
+
+                        if (r) {
+                            that.list = [];
+                            that.ads = [];
+                            resolve('User confirmed wiping existing data.');
+                        } else {
+                            reject('User rejected to wipe existing data.');
+                        }
+                    } else {
+                        resolve('Lists are empty.');
+                    }
+                })
+            },
+
+            loadSampleData() {
+                let that = this;
+                that.ensureListsAreEmpty().then((result) => {
+                    console.log(result);
+
+                    SampleData.links.forEach(function(element){
+                        that.list.push(element);
+                    });
+
+                    SampleData.ads.forEach(function(element){
+                        that.ads.push(element);
+                    });
+
+                    that.$forceUpdate();
+                });
             }
         }
     }

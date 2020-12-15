@@ -1,0 +1,36 @@
+{
+   "links":[
+      {
+         "time":18,
+         "text":"Duyuru: Podcast yaparak geçinilir mi?",
+         "url":"https://www.youtube.com/redirect?redir_token=QUFFLUhqbV9CeHAxWFp0UF"
+      },
+      {
+         "time":104,
+         "text":"Türkiye Günlükleri serisi",
+         "url":null
+      },
+      {
+         "time":200,
+         "text":"Berber muhabbeti",
+         "url":null
+      },
+      {
+         "time":360,
+         "text":"Dilin amacı ne?",
+         "url":null
+      }
+   ],
+   "ads":[
+      {
+         "time":30,
+         "duration":12,
+         "description":"Wix spot"
+      },
+      {
+         "time":125,
+         "duration":20,
+         "description":"GoDaddy spot"
+      }
+   ]
+}

@@ -48,6 +48,11 @@ export default {
     mounted() {
         this.list = this.listData;
     },
+    watch: {
+        listData() {
+            this.list = this.listData
+        }
+    },
     methods: {
         addLink() {
             if (!this.minutes) {

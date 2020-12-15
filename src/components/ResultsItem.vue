@@ -1,11 +1,11 @@
 <template>
     <li>
         <div v-if="element.duration"> <!-- this is an ad -->
-            <Ad :data-ad="element" v-show="isAdsVisible"></Ad>
+            <Ad :data-ad="element" v-show="isAdsVisible" :key="'r_a_' + index"></Ad>
         </div>
 
         <div v-else>
-            <ListElement :data-element="element"></ListElement>
+            <ListElement :data-element="element" :key="'r_l_' + index"></ListElement>
         </div>
     </li>
 </template>
@@ -14,7 +14,7 @@
 import Ad from './Ad';
 import ListElement from './ListElement';
 export default {
-    props:['element', 'is-ads-visible'],
+    props:['element', 'is-ads-visible', 'index'],
     components: {
         Ad, ListElement
     },

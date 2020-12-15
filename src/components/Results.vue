@@ -1,25 +1,26 @@
 <template>
     <div>
-        <h3>Result <button @click="isAdsVisible = !isAdsVisible">Toggle Ads</button> </h3>
+        <h3>Result <button @click="isAdsVisible = !isAdsVisible" v-if="ads.length">Toggle Ads</button> </h3>
 
         <ul class="no-list-style text-align-left">
-            <ListWithAdsItem 
+            <ResultsItem 
                 :element="element" 
                 v-for="(element, index) in shiftedList" 
-                :key="index"
-                :is-ads-visible="isAdsVisible"></ListWithAdsItem>
+                :key="'r_' + index"
+                :is-ads-visible="isAdsVisible"
+                :index="index"></ResultsItem>
         </ul>
         
     </div>
 </template>
 
 <script>
-import ListWithAdsItem from './ListWithAdsItem';
+import ResultsItem from './ResultsItem';
 
 export default {
-    name: 'ListWithAds',
+    name: 'Results',
     components: {
-        ListWithAdsItem
+        ResultsItem
     },
     props: ['data-list', 'data-ads'],
     data() {
@@ -32,6 +33,14 @@ export default {
     mounted() {
         this.list = this.dataList;
         this.ads = this.dataAds;
+    },
+    watch: {
+        dataAds() {
+            this.ads = this.dataAds;
+        },
+        dataList() {
+            this.list = this.dataList;
+        }
     },
 
     computed: {

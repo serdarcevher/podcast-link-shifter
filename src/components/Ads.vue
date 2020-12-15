@@ -51,6 +51,11 @@ export default {
     mounted() {
         this.ads = this.adsData;
     },
+    watch: {
+        adsData() {
+            this.ads = this.adsData;
+        }
+    },
     methods: {
         addAd() {
 
