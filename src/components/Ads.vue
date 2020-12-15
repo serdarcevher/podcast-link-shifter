@@ -12,7 +12,7 @@
             </p>
 
             <p class="text-align-left">
-                <label>Description:</label><input type="text" v-model="description" autocomplete="off" name="text" class="long-input mb-2" placeholder="Optional" />
+                <label>Description:</label><input type="text" v-model.trim="description" autocomplete="off" name="text" class="long-input mb-2" placeholder="Optional" />
             </p>
 
             <button type="button" class="btn mt-1 p-2 mb-2" @click="addAd">Add Ad</button>

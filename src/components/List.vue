@@ -9,10 +9,10 @@
             </p>
 
             <p>
-                <label>Text:</label> <input type="text" v-model="text" autocomplete="off" name="text" class="long-input mb-2" placeholder="Optional if URL exists" />
+                <label>Text:</label> <input type="text" v-model.trim="text" autocomplete="off" name="text" class="long-input mb-2" placeholder="Optional if URL exists" />
             </p>
             <p>
-                <label>URL:</label> <input type="text" v-model="url" autocomplete="off" name="link" class="long-input" placeholder="Optional if text exists" />
+                <label>URL:</label> <input type="text" v-model.trim="url" autocomplete="off" name="link" class="long-input" placeholder="Optional if text exists" />
             </p>
 
             <button type="button" class="btn mt-1 p-2" @click="addLink">Add Link</button>
