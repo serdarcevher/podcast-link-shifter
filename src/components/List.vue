@@ -1,9 +1,10 @@
 <template>
     <div>
+        <h3>Links</h3>
         <form @keyup.enter="addLink" ref="dataForm">
             <p>
                 <label>Time: </label>
-                <input type="number" v-model.number="minutes" name="minutes" placeholder="00" class="short-input" min="0" />:
+                <input type="number" v-model.number="minutes" name="minutes" placeholder="00" class="short-input" min="0" /> :
                 <input type="number" v-model.number="seconds" name="seconds" placeholder="01" class="short-input" min="0" max="59" />
             </p>
 
@@ -14,12 +15,13 @@
                 <label>URL:</label> <input type="text" v-model="url" autocomplete="off" name="link" class="long-input" placeholder="Optional if text exists" />
             </p>
 
-            <ul id="elements-list" class="text-align-left no-list-style centered">
-                <ListElement v-for="element in list" v-bind:key="element.minutes + '_' + element.seconds" :data-element="element"></ListElement>
-            </ul>
-
             <button type="button" class="btn mt-1 p-2" @click="addLink">Add Link</button>
+
         </form>
+
+        <ul id="elements-list" class="text-align-left no-list-style centered">
+            <ListElement v-for="element in list" v-bind:key="element.minutes + '_' + element.seconds" :data-element="element"></ListElement>
+        </ul>
 
     </div>
 
@@ -43,7 +45,6 @@ export default {
     props: ['list-data'],
     mounted() {
         this.list = this.listData;
-        console.log(this.list);
     },
     methods: {
         addLink() {

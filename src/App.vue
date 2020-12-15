@@ -26,6 +26,7 @@ div#columns {
   flex-grow: 1;
   width: 33%;
   height: auto;
+  padding-bottom:20px;
 }
 
 #columns > div.column:nth-child(even) {
@@ -43,14 +44,22 @@ div#columns {
   color: #2c3e50;
   margin-top: 60px;
 }
+
 d-block {
   display:block;
 }
 .p-2 {
   padding:10px;
 }
+.px-2 {
+  padding-left:10px;
+  padding-right:10px;
+}
 .p-4 {
   padding:20px;
+}
+.pt-2 {
+  padding-top:10px;
 }
 .mt-1 {
   margin-top:5px;
@@ -94,9 +103,21 @@ d-block {
   margin:0 auto;
 }
 .text-align-left {
-  text-align:left
+  text-align:left;
 }
+.text-align-center {
+  text-align:center;
+}
+
 .no-list-style {
   list-style-type:none;
+}
+
+.ad-bubble {
+  width:80%;
+  background-color:blue;
+  color:white;
+  border-radius:10px;
+  height:30px;
 }
 </style>
