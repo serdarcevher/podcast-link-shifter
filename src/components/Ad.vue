@@ -20,13 +20,11 @@ export default {
     mixins: [Helper],
     props: ['data-ad', 'is-result-item'],
     data() {
-        return {
-            element: {}
-        }
+        return {}
     },
     computed: {
         point() {
-            return this.timetoMinsAndSecs(this.element.time)
+            return this.timetoMinsAndSecs(this.dataAd.time)
         },
         minutes() {
             return this.point.minutes;
@@ -36,15 +34,12 @@ export default {
         },
 
         adText() {
-            let text = this.element.duration + 's';
-            if (this.element.description) {
-                text+= ' (' + this.element.description + ')';
+            let text = this.dataAd.duration + 's';
+            if (this.dataAd.description) {
+                text+= ' (' + this.dataAd.description + ')';
             }
             return text;
         }
-    },
-    mounted() {
-        this.element = this.dataAd;
     },
     methods: {
         remove() {
