@@ -8,5 +8,5 @@ cd dist
 git init
 git add -A
 git commit -m 'deploy'
-git push -f git@github.com:serdarcevher/podcast-link-shifter.git master:gh-pages
+git push -f git@github.com:serdarcevher/podcast-timecode-shifter.git master:gh-pages
 cd -

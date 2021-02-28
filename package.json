@@ -1,7 +1,7 @@
 {
-  "name": "podcast-link-shifter",
+  "name": "podcast-timecode-shifter",
   "version": "0.1.0",
-  "description": "An helper for podcast creators to automatically adjust timestamp links based on the inserted ads in between.",
+  "description": "An helper for podcast creators to automatically adjust timecodes based on the inserted ads in between.",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -11,10 +11,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/serdarcevher/podcast-link-shifter.git"
+    "url": "git+https://github.com/serdarcevher/podcast-timecode-shifter.git"
   },
   "keywords": [
     "podcast",
+    "timecode",
     "timestamp",
     "ads",
     "advertising",

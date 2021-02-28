@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <img alt="Podcast Link Shifter Logo" src="./assets/microphone.png">
+    <img alt="Podcast Timecode Shifter Logo" src="./assets/microphone.png">
 
-    <Home msg="Podcast Link Shifter"></Home>
+    <Home msg="Podcast Timecode Shifter"></Home>
   </div>
 </template>
 

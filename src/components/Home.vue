@@ -1,7 +1,7 @@
 <template>
     <div id="container">
         <div id="top-left">
-            <a class="flex-link ml-1" href="https://github.com/serdarcevher/podcast-link-shifter">
+            <a class="flex-link ml-1" href="https://github.com/serdarcevher/podcast-timecode-shifter">
                 <img alt="See the source code in GitHub" src="../assets/githubMark.png" width="48" height="48">
                 <div class="ml-1">See the source code</div>
             </a>
